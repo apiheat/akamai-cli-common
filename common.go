@@ -8,34 +8,9 @@ import (
 	"os"
 	"strconv"
 
-	edgegrid "github.com/apiheat/go-edgegrid"
 	homedir "github.com/mitchellh/go-homedir"
 	"github.com/urfave/cli"
 )
-
-// EdgeClientInit Initializes client and returns it to CLI
-//
-// common
-func EdgeClientInit(config, section, debug string) (*edgegrid.Client, error) {
-	var (
-		apiClient     *edgegrid.Client
-		apiClientOpts *edgegrid.ClientOptions
-	)
-
-	apiClientOpts = &edgegrid.ClientOptions{}
-	apiClientOpts.ConfigPath = config
-	apiClientOpts.ConfigSection = section
-	apiClientOpts.DebugLevel = debug
-
-	// create new Akamai API client
-	apiClient, err := edgegrid.NewClient(nil, apiClientOpts)
-
-	if err != nil {
-		return nil, err
-	}
-
-	return apiClient, nil
-}
 
 // PrintJSON pretty print JSON string
 func PrintJSON(str string) {
