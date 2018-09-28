@@ -75,10 +75,10 @@ func VerifyArgumentByName(c *cli.Context, argName string) {
 }
 
 // SetStringId value
-func SetStringId(c *cli.Context) string {
+func SetStringId(c *cli.Context, errMessage string) string {
 	var id string
 	if c.NArg() == 0 {
-		log.Fatal("Please provide user e-mail")
+		log.Fatal(errMessage)
 	}
 
 	id = c.Args().Get(0)
