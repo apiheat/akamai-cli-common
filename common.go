@@ -74,6 +74,18 @@ func VerifyArgumentByName(c *cli.Context, argName string) {
 	}
 }
 
+// SetStringId value
+func SetStringId(c *cli.Context) string {
+	var id string
+	if c.NArg() == 0 {
+		log.Fatal("Please provide user e-mail")
+	}
+
+	id = c.Args().Get(0)
+	return id
+}
+
+// SetIntID value and verify that it is int
 func SetIntID(c *cli.Context, errMessage string) string {
 	var id string
 	if c.NArg() == 0 {
