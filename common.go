@@ -6,19 +6,10 @@ import (
 	"fmt"
 	"log"
 	"os"
-	"strings"
 
 	homedir "github.com/mitchellh/go-homedir"
 	"github.com/urfave/cli"
 )
-
-// StringToStringsArr transform string of comma seperated word to array of words
-func StringToStringsArr(str string) (strArr []string) {
-	for _, s := range strings.Split(str, ",") {
-		strArr = append(strArr, s)
-	}
-	return strArr
-}
 
 // PrintJSON pretty print JSON string
 func PrintJSON(str string) {
