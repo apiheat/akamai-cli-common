@@ -6,11 +6,6 @@ import (
 	"github.com/urfave/cli"
 )
 
-var (
-	apiClient     *edgegrid.Client
-	apiClientOpts *edgegrid.ClientOptions
-)
-
 func CreateNewApp(appShortName, usage, version string) *cli.App {
 	app := cli.NewApp()
 	app.Name = inCLI(appShortName)
