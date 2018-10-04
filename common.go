@@ -7,6 +7,7 @@ import (
 	"log"
 	"os"
 	"strconv"
+	"strings"
 
 	homedir "github.com/mitchellh/go-homedir"
 	"github.com/urfave/cli"
@@ -57,12 +58,11 @@ func getEnv(key, fallback string) string {
 }
 
 // inCLI detect if cli runs from akamai framework
-func inCLI(appShortName string) string {
+func inCLI(appName string) string {
 	_, inCLI := os.LookupEnv("AKAMAI_CLI")
 
-	appName := "akamai-" + appShortName
 	if inCLI {
-		appName = "akamai " + appShortName
+		appName = strings.Replace(appName, "-cli-", " ", -1)
 	}
 
 	return appName
