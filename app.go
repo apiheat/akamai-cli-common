@@ -45,6 +45,11 @@ func CreateFlags() []cli.Flag {
 			Usage:  "Debug Level",
 			EnvVar: string(edgegrid.EnvVarDebugLevelSection),
 		},
+		cli.StringFlag{
+			Name:  "ask",
+			Value: "",
+			Usage: "Account Switch Key (ASK)",
+		},
 	}
 
 	return appFlags
