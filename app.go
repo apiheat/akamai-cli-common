@@ -2,7 +2,7 @@ package commonCLI
 
 // CreateNewApp creates new app description
 import (
-	edgegrid "github.com/apiheat/go-edgegrid"
+	"github.com/apiheat/go-edgegrid/edgegrid"
 	"github.com/urfave/cli"
 )
 
