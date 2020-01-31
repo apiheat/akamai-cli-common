@@ -6,11 +6,9 @@ import (
 	"fmt"
 	"log"
 	"os"
-	"strconv"
 	"strings"
 
 	homedir "github.com/mitchellh/go-homedir"
-	"github.com/urfave/cli/v2"
 )
 
 // PrintJSON pretty print JSON string
@@ -68,39 +66,46 @@ func inCLI(appName string) string {
 	return appName
 }
 
-//VerifyArgumentByName ** DEPRECTED ** USE CLI FOR THIS!
-func VerifyArgumentByName(c *cli.Context, argName string) {
-	if c.String(argName) == "" {
-		log.Fatal(fmt.Sprintf("Please provide required argument(s)! [ %s ]", argName))
-	}
-}
+/*
 
-//SetStringId value
-func SetStringId(c *cli.Context, errMessage string) string {
-	var id string
-	if c.NArg() == 0 {
-		log.Fatal(errMessage)
-	}
 
-	id = c.Args().Get(0)
-	return id
-}
+** DEPRECTED ** USE CLI FOR THIS!
 
-// SetIntID value and verify that it is int
-func SetIntID(c *cli.Context, errMessage string) string {
-	var id string
-	if c.NArg() == 0 {
-		log.Fatal(errMessage)
-	}
 
-	id = c.Args().Get(0)
-	isStringInt(id)
-	return id
-}
+ */
 
-func isStringInt(id string) {
-	if _, err := strconv.Atoi(id); err != nil {
-		errStr := fmt.Sprintf("ID should be integer, you provided: %q\n", id)
-		log.Fatal(errStr)
-	}
-}
+// func VerifyArgumentByName(c *cli.Context, argName string) {
+// 	if c.String(argName) == "" {
+// 		log.Fatal(fmt.Sprintf("Please provide required argument(s)! [ %s ]", argName))
+// 	}
+// }
+
+// //SetStringId value
+// func SetStringId(c *cli.Context, errMessage string) string {
+// 	var id string
+// 	if c.NArg() == 0 {
+// 		log.Fatal(errMessage)
+// 	}
+
+// 	id = c.Args().Get(0)
+// 	return id
+// }
+
+// // SetIntID value and verify that it is int
+// func SetIntID(c *cli.Context, errMessage string) string {
+// 	var id string
+// 	if c.NArg() == 0 {
+// 		log.Fatal(errMessage)
+// 	}
+
+// 	id = c.Args().Get(0)
+// 	isStringInt(id)
+// 	return id
+// }
+
+// func isStringInt(id string) {
+// 	if _, err := strconv.Atoi(id); err != nil {
+// 		errStr := fmt.Sprintf("ID should be integer, you provided: %q\n", id)
+// 		log.Fatal(errStr)
+// 	}
+// }
