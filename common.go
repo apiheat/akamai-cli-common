@@ -79,7 +79,7 @@ func GetArgumentInt(c *cli.Context, errMessage string) int {
 	id := getArgumentValue(c, errMessage)
 
 	ok, val := isStringInt(id)
-	if ok != true {
+	if !ok {
 		log.Fatal(errMessage)
 	}
 
