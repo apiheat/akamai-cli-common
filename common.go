@@ -10,7 +10,7 @@ import (
 	"strings"
 
 	homedir "github.com/mitchellh/go-homedir"
-	"github.com/urfave/cli"
+	"github.com/urfave/cli/v2"
 )
 
 // PrintJSON pretty print JSON string
@@ -68,13 +68,14 @@ func inCLI(appName string) string {
 	return appName
 }
 
+//VerifyArgumentByName ** DEPRECTED ** USE CLI FOR THIS!
 func VerifyArgumentByName(c *cli.Context, argName string) {
 	if c.String(argName) == "" {
 		log.Fatal(fmt.Sprintf("Please provide required argument(s)! [ %s ]", argName))
 	}
 }
 
-// SetStringId value
+//SetStringId value
 func SetStringId(c *cli.Context, errMessage string) string {
 	var id string
 	if c.NArg() == 0 {
