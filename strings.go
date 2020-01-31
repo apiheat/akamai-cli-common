@@ -1,6 +1,8 @@
 package commonCLI
 
 import (
+	"reflect"
+	"regexp"
 	"sort"
 	"strconv"
 	"strings"
@@ -112,4 +114,32 @@ func DeleteSlicefromSlice(slice, delete []int) []int {
 	}
 
 	return RemoveIntDuplicates(slice)
+}
+
+//isRegexMatch checks if our string matches regex
+func isRegexMatch(str, pattern string) bool {
+	match, _ := regexp.MatchString(pattern, str)
+
+	return match
+}
+
+//isStringInt checks if given string is an integer and also returns int as second value
+func isStringInt(id string) (bool, int) {
+	val, err := strconv.Atoi(id)
+
+	if err != nil {
+		return false, 0
+	}
+
+	return true, val
+}
+
+//isTypeExpected checks if our object is of expected type
+func isTypeExpected(s, expected interface{}) bool {
+
+	if reflect.TypeOf(s) == reflect.TypeOf(expected) {
+		return true
+	}
+
+	return false
 }

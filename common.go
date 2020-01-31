@@ -9,6 +9,7 @@ import (
 	"strings"
 
 	homedir "github.com/mitchellh/go-homedir"
+	"github.com/urfave/cli/v2"
 )
 
 // PrintJSON pretty print JSON string
@@ -66,46 +67,33 @@ func inCLI(appName string) string {
 	return appName
 }
 
-/*
+//GetArgumentStr retrieves argument value for string
+func GetArgumentStr(c *cli.Context, errMessage string) string {
+	id := getArgumentValue(c, errMessage)
 
+	return id
+}
 
-** DEPRECTED ** USE CLI FOR THIS!
+//GetArgumentInt retrieves argument value for int
+func GetArgumentInt(c *cli.Context, errMessage string) int {
+	id := getArgumentValue(c, errMessage)
 
+	ok, val := isStringInt(id)
+	if ok != true {
+		log.Fatal(errMessage)
+	}
 
- */
+	return val
+}
 
-// func VerifyArgumentByName(c *cli.Context, argName string) {
-// 	if c.String(argName) == "" {
-// 		log.Fatal(fmt.Sprintf("Please provide required argument(s)! [ %s ]", argName))
-// 	}
-// }
+//getArgumentValue retrieves argument value
+func getArgumentValue(c *cli.Context, errMessage string) string {
+	var id string
 
-// //SetStringId value
-// func SetStringId(c *cli.Context, errMessage string) string {
-// 	var id string
-// 	if c.NArg() == 0 {
-// 		log.Fatal(errMessage)
-// 	}
+	if c.NArg() == 0 {
+		log.Fatal(errMessage)
+	}
 
-// 	id = c.Args().Get(0)
-// 	return id
-// }
-
-// // SetIntID value and verify that it is int
-// func SetIntID(c *cli.Context, errMessage string) string {
-// 	var id string
-// 	if c.NArg() == 0 {
-// 		log.Fatal(errMessage)
-// 	}
-
-// 	id = c.Args().Get(0)
-// 	isStringInt(id)
-// 	return id
-// }
-
-// func isStringInt(id string) {
-// 	if _, err := strconv.Atoi(id); err != nil {
-// 		errStr := fmt.Sprintf("ID should be integer, you provided: %q\n", id)
-// 		log.Fatal(errStr)
-// 	}
-// }
+	id = c.Args().Get(0)
+	return id
+}
