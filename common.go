@@ -6,7 +6,6 @@ import (
 	"fmt"
 	"log"
 	"os"
-	"strconv"
 	"strings"
 
 	homedir "github.com/mitchellh/go-homedir"
@@ -68,39 +67,33 @@ func inCLI(appName string) string {
 	return appName
 }
 
-//VerifyArgumentByName ** DEPRECTED ** USE CLI FOR THIS!
-func VerifyArgumentByName(c *cli.Context, argName string) {
-	if c.String(argName) == "" {
-		log.Fatal(fmt.Sprintf("Please provide required argument(s)! [ %s ]", argName))
-	}
+//GetArgumentStr retrieves argument value for string
+func GetArgumentStr(c *cli.Context, errMessage string) string {
+	id := getArgumentValue(c, errMessage)
+
+	return id
 }
 
-//SetStringId value
-func SetStringId(c *cli.Context, errMessage string) string {
+//GetArgumentInt retrieves argument value for int
+func GetArgumentInt(c *cli.Context, errMessage string) int {
+	id := getArgumentValue(c, errMessage)
+
+	ok, val := isStringInt(id)
+	if !ok {
+		log.Fatal(errMessage)
+	}
+
+	return val
+}
+
+//getArgumentValue retrieves argument value
+func getArgumentValue(c *cli.Context, errMessage string) string {
 	var id string
+
 	if c.NArg() == 0 {
 		log.Fatal(errMessage)
 	}
 
 	id = c.Args().Get(0)
 	return id
-}
-
-// SetIntID value and verify that it is int
-func SetIntID(c *cli.Context, errMessage string) string {
-	var id string
-	if c.NArg() == 0 {
-		log.Fatal(errMessage)
-	}
-
-	id = c.Args().Get(0)
-	isStringInt(id)
-	return id
-}
-
-func isStringInt(id string) {
-	if _, err := strconv.Atoi(id); err != nil {
-		errStr := fmt.Sprintf("ID should be integer, you provided: %q\n", id)
-		log.Fatal(errStr)
-	}
 }
