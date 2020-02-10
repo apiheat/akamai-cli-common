@@ -1,4 +1,4 @@
-module github.com/apiheat/akamai-cli-common
+module github.com/apiheat/akamai-cli-common/v4
 
 go 1.13
 
