@@ -6,6 +6,6 @@ require (
 	github.com/apiheat/go-edgegrid/v6 v6.1.11
 	github.com/mitchellh/go-homedir v1.1.0
 	github.com/smartystreets/goconvey v1.6.4 // indirect
-	github.com/urfave/cli/v2 v2.1.1
+	github.com/urfave/cli/v2 v2.3.0
 	gopkg.in/ini.v1 v1.51.1 // indirect
 )
