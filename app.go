@@ -10,7 +10,7 @@ import (
 
 //CreateNewApp returns new application
 func CreateNewApp(appShortName, usage, version string) *cli.App {
-
+	
 	app := &cli.App{
 		Name:     inCLI(appShortName),
 		Usage:    usage,
@@ -19,7 +19,7 @@ func CreateNewApp(appShortName, usage, version string) *cli.App {
 		Authors: []*cli.Author{
 			&cli.Author{
 				Name:  "Rafal Pieniazek",
-				Email: "-",
+				Email: "https://mailhide.io/e/XZ3bESkk",
 			},
 			&cli.Author{
 				Name:  "Petr Artamonov",
