@@ -10,7 +10,7 @@ import (
 
 //CreateNewApp returns new application
 func CreateNewApp(appShortName, usage, version string) *cli.App {
-
+	
 	app := &cli.App{
 		Name:     inCLI(appShortName),
 		Usage:    usage,
@@ -19,7 +19,7 @@ func CreateNewApp(appShortName, usage, version string) *cli.App {
 		Authors: []*cli.Author{
 			&cli.Author{
 				Name:  "Rafal Pieniazek",
-				Email: "-",
+				Email: "https://mailhide.io/e/XZ3bESkk",
 			},
 			&cli.Author{
 				Name:  "Petr Artamonov",
@@ -38,26 +38,44 @@ func CreateFlags() []cli.Flag {
 
 	appFlags := []cli.Flag{
 		&cli.StringFlag{
-			Name:    "section, s",
-			Value:   "default",
+			Name:  "section",
+			Value: "default",
+			Aliases: []string{
+				"s",
+			},
 			Usage:   "`NAME` of section to use from credentials file",
 			EnvVars: []string{string(edgegrid.EnvVarEdgercSection)},
 		},
 		&cli.StringFlag{
-			Name:    "config, c",
-			Value:   HomeDir(),
+			Name:  "config",
+			Value: HomeDir(),
+			Aliases: []string{
+				"c",
+			},
 			Usage:   "Location of the credentials `FILE`",
 			EnvVars: []string{string(edgegrid.EnvVarEdgercPath)},
 		},
 		&cli.StringFlag{
 			Name:    "debug",
 			Value:   "",
-			Usage:   "Debug Level",
+			Usage:   "(Deprecated) Debug Level",
 			EnvVars: []string{string(edgegrid.EnvVarDebugLevelSection)},
 		},
 		&cli.StringFlag{
-			Name:  "account-switch-key, ask",
+			Name:  "verbosity",
 			Value: "",
+			Aliases: []string{
+				"v",
+			},
+			Usage:   "Defines level of messages being displayed ( info,warning,error,trace,debug )",
+			EnvVars: []string{string(edgegrid.EnvVarDebugLevelSection)},
+		},
+		&cli.StringFlag{
+			Name:  "account-switch-key",
+			Value: "",
+			Aliases: []string{
+				"ask",
+			},
 			Usage: "Account Switch Key (ASK)",
 		},
 	}
